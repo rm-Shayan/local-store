@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Local Store</title>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-r from-blue-500 to-purple-600 shadow-md p-4 flex justify-between items-center text-white">
+        <h1 class="text-2xl font-bold">LOCAL STORE</h1>
+        <div class="flex items-center gap-6">
+            <input id="input" type="text" placeholder="Search products..." class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 w-96 text-gray-800">
+            <div class="relative">
+                <button id="cartButton" class="relative">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18l-2 10H5L3 3zm0 0l2 10h14M9 21h6" />
+                    </svg>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+   
+  <!-- Carousel -->
+<div class="relative w-full h-64 mt-4 overflow-hidden">
+    <div id="carousel-inner" class="flex transition-transform duration-700 ease-in-out">
+        <img src="assets/1.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/2.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/3.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/4.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/5.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/6.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/7.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/8.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/9.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/10.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/11.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+        <img src="assets/12.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+    </div>
+
+    <!-- Navigation Buttons -->
+    <button id="prevBtn" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-70 hover:opacity-100">
+        ◀
+    </button>
+    <button id="nextBtn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-70 hover:opacity-100">
+        ▶
+    </button>
+</div>
+
+
+    <!-- Product Listing -->
+    <h1 class="text-2xl text-center font-bold my-8">Products</h1>
+    <div id="product-container" class="grid grid-cols-3 gap-6 p-6">
+       
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cartContainer" class="fixed top-0 right-0 w-80 h-screen bg-white shadow-lg transform translate-x-full transition-transform duration-500 overflow-y-auto z-50 backdrop-blur-lg">
+        <button id="closeCart" class="absolute top-2 right-2 text-xl text-gray-600 hover:text-red-500">✖</button>
+        <h2 class="text-lg font-semibold p-4 border-b">Your Cart</h2>
+        <div id="cartItems" class="p-4">
+            <p class="text-center text-gray-500">Your cart is empty</p>
+        </div>
+        <div class="p-4 border-t">
+            <button id="checkoutButton" class="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Featured Products Section -->
+    <section class="p-6 bg-gradient-to-r from-yellow-400 to-red-500 text-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-center mb-4">Featured Products</h2>
+        <div id="featured-container" class="grid grid-cols-4 gap-6"></div>
+    </section>
+
+    <!-- Shipping Options -->
+    <section class="p-6">
+        <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Shipping Options</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gradient-to-b from-gray-200 to-gray-50 shadow-lg rounded-lg p-4 text-center hover:scale-105 transition-transform">
+                <h3 class="text-lg font-semibold">Standard Shipping</h3>
+                <p class="text-gray-600">Delivered in 5-7 business days</p>
+                <p class="text-blue-600 font-bold mt-2">Free</p>
+            </div>
+            <div class="bg-gradient-to-b from-yellow-200 to-yellow-50 shadow-lg rounded-lg p-4 text-center hover:scale-105 transition-transform">
+                <h3 class="text-lg font-semibold">Express Shipping</h3>
+                <p class="text-gray-600">Delivered in 2-3 business days</p>
+                <p class="text-blue-600 font-bold mt-2">$9.99</p>
+            </div>
+            <div class="bg-gradient-to-b from-red-200 to-red-50 shadow-lg rounded-lg p-4 text-center hover:scale-105 transition-transform">
+                <h3 class="text-lg font-semibold">Same-Day Delivery</h3>
+                <p class="text-gray-600">Order before 12 PM for same-day delivery</p>
+                <p class="text-blue-600 font-bold mt-2">$19.99</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="bg-gradient-to-r from-green-400 to-blue-500 p-6 text-white text-center rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold">About Our Store</h2>
+        <p class="mt-2">Welcome to Local Store! We provide high-quality products at the best prices. Browse our catalog and shop with confidence!</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 text-center py-4 mt-6">
+        <p>&copy; 2025 Local Store. All rights reserved.</p>
+        <div class="flex justify-center gap-4 mt-2">
+            <a href="#" class="hover:text-blue-400">Privacy Policy</a>
+            <a href="#" class="hover:text-blue-400">Terms of Service</a>
+            <a href="#" class="hover:text-blue-400">Contact Us</a>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
