@@ -4,59 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Local Store</title>
 </head>
 <body class="bg-gray-100">
 
-    <!-- Navbar -->
-    <nav class="bg-gradient-to-r from-blue-500 to-purple-600 shadow-md p-4 flex justify-between items-center text-white">
-        <h1 class="text-2xl font-bold">LOCAL STORE</h1>
-        <div class="flex items-center gap-6">
-            <input id="input" type="text" placeholder="Search products..." class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 w-96 text-gray-800">
-            <div class="relative">
-                <button id="cartButton" class="relative">
-                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18l-2 10H5L3 3zm0 0l2 10h14M9 21h6" />
-                    </svg>
-                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 hidden">0</span>
-                </button>
-            </div>
-        </div>
-    </nav>
+
+
+<!-- Navbar -->
+<nav class="bg-gradient-to-r from-blue-500 to-purple-600 shadow-md p-4 flex justify-between items-center text-white">
+    <h1 class="text-2xl font-bold">LOCAL STORE</h1>
+
+    <!-- Hamburger Menu Button (Hidden on larger screens) -->
+    <button id="menuButton" class="sm:hidden text-white focus:outline-none">
+        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
+    </button>
+
+    <!-- Desktop Menu -->
+    <div id="desktopMenu" class="hidden sm:flex sm:items-center sm:space-x-6">
+        <input id="input" type="text" placeholder="Search products..."
+            class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full sm:w-60 md:w-80 lg:w-96 text-gray-800">
+        
+        <!-- Cart Button (Moves dynamically) -->
+        <button id="cartButton" class="relative">
+            <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18l-2 10H5L3 3zm0 0l2 10h14M9 21h6"/>
+            </svg>
+            <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 hidden">0</span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Dropdown Menu -->
+<div id="mobileMenu" class="hidden flex-col space-y-4 p-4 bg-white text-gray-800 sm:hidden">
+    <input id="mobileInput" type="text" placeholder="Search products..."
+        class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full text-gray-800">
+
+    <!-- Cart Button Placeholder for Mobile -->
+    <div id="mobileCartPlaceholder"></div>
+</div>
+
+
+    
+    
+    
+    
+
+<!-- Mobile Dropdown Menu -->
+<div id="mobileMenu" class="hidden flex-col space-y-4 p-4 bg-white text-gray-800 sm:hidden">
+    <input id="mobileInput" type="text" placeholder="Search products..."
+        class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full text-gray-800">
+    <button id="mobileCartButton" class="flex items-center gap-2">
+        <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18l-2 10H5L3 3zm0 0l2 10h14M9 21h6"/>
+        </svg>
+        <span class="text-lg">Cart</span>
+    </button>
+</div>
 
    
-  <!-- Carousel -->
-<div class="relative w-full h-64 mt-4 overflow-hidden">
-    <div id="carousel-inner" class="flex transition-transform duration-700 ease-in-out">
-        <img src="assets/1.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/2.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/3.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/4.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/5.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/6.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/7.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/8.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/9.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/10.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/11.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
-        <img src="assets/12.jpg" class="carousel-image w-full h-64 object-cover rounded-lg cursor-pointer">
+<!-- carousel -->
+<div class="relative w-full h-[80vh] overflow-hidden">
+    <div id="carousel-inner" class="flex transition-transform duration-500 ease-in-out">
+        <div class="slide grid grid-cols-3 gap-4 w-full flex-shrink-0">
+            <img src="assets/1.jpg" class="carousel-image w-full h-[80vh] object-cover">
+            <img src="assets/2.jpg" class="carousel-image w-full h-[80vh] object-cover">
+            <img src="assets/3.jpg" class="carousel-image w-full h-[80vh] object-cover">
+        </div>
+        <div class="slide grid grid-cols-3 gap-4 w-full flex-shrink-0">
+            <img src="assets/4.jpg" class="carousel-image w-full h-[80vh] object-cover">
+            <img src="assets/5.jpg" class="carousel-image w-full h-[80vh] object-cover">
+            <img src="assets/6.jpg" class="carousel-image w-full h-[80vh] object-cover">
+        </div>
+        <div class="slide grid grid-cols-3 gap-4 w-full flex-shrink-0">
+            <img src="assets/7.jpg" class="carousel-image w-full h-[80vh] object-cover">
+            <img src="assets/8.jpg" class="carousel-image w-full h-[80vh] object-cover">
+            <img src="assets/9.jpg" class="carousel-image w-full h-[80vh] object-cover">
+        </div>
+        <div class="slide grid grid-cols-3 gap-4 w-full flex-shrink-0">
+            <img src="assets/10.jpg" class="carousel-image w-full h-[80vh] object-cover">
+            <img src="assets/11.jpg" class="carousel-image w-full h-[80vh] object-cover">
+            <img src="assets/12.jpg" class="carousel-image w-full h-[80vh] object-cover">
+        </div>
     </div>
 
     <!-- Navigation Buttons -->
-    <button id="prevBtn" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-70 hover:opacity-100">
+    <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black text-white p-4 rounded-full opacity-80 hover:opacity-100 z-10">
         ◀
     </button>
-    <button id="nextBtn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-70 hover:opacity-100">
+    <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black text-white p-4 rounded-full opacity-80 hover:opacity-100 z-10">
         ▶
     </button>
 </div>
 
 
+
+
+
+
+
+
     <!-- Product Listing -->
     <h1 class="text-2xl text-center font-bold my-8">Products</h1>
-    <div id="product-container" class="grid grid-cols-3 gap-6 p-6">
-       
-    </div>
+    <div id="product-container"></div>
 
     <!-- Cart Sidebar -->
     <div id="cartContainer" class="fixed top-0 right-0 w-80 h-screen bg-white shadow-lg transform translate-x-full transition-transform duration-500 overflow-y-auto z-50 backdrop-blur-lg">
@@ -73,7 +125,7 @@
     <!-- Featured Products Section -->
     <section class="p-6 bg-gradient-to-r from-yellow-400 to-red-500 text-white rounded-lg shadow-md">
         <h2 class="text-2xl font-bold text-center mb-4">Featured Products</h2>
-        <div id="featured-container" class="grid grid-cols-4 gap-6"></div>
+        <div id="featured-container"></div>
     </section>
 
     <!-- Shipping Options -->
